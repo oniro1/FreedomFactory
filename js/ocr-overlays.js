@@ -27,15 +27,22 @@
     const rect = stage.getBoundingClientRect();
 
     for (const item of current.words) {
+      const targetWidth = item.w * rect.width;
+      const targetHeight = item.h * rect.height;
       const span = document.createElement("span");
       span.className = "word";
       span.textContent = item.t;
       span.style.left = `${item.x * 100}%`;
       span.style.top = `${item.y * 100}%`;
-      span.style.width = `${item.w * 100}%`;
-      span.style.height = `${item.h * 100}%`;
-      span.style.fontSize = `${Math.max(1, item.h * rect.height * 1.08)}px`;
+      span.style.fontSize = `${Math.max(1, targetHeight * 1.1)}px`;
+      span.style.lineHeight = `${Math.max(1, targetHeight)}px`;
       layer.appendChild(span);
+
+      const naturalWidth = span.getBoundingClientRect().width;
+      if (naturalWidth > 0 && targetWidth > 0) {
+        span.style.transform = `scaleX(${targetWidth / naturalWidth})`;
+      }
+
       words.push(span);
     }
   }
@@ -45,7 +52,11 @@
     .then((json) => {
       data = json;
       layer.classList.add("has-word-ocr");
-      render();
+      if (document.fonts?.ready) {
+        document.fonts.ready.then(render);
+      } else {
+        render();
+      }
     })
     .catch(() => {});
 

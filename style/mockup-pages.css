@@ -1,3 +1,8 @@
+:root {
+  --index-frame-ratio: 1.30317;
+  --mockup-frame-factor: 0.9;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -31,6 +36,7 @@ body {
   position: relative;
   width: 100%;
   margin: 0 auto;
+  container-type: inline-size;
 }
 
 .mockup-art {
@@ -48,7 +54,10 @@ body {
   }
 
   .mockup-stage {
-    width: min(100vw, calc(100vh * 1.540));
+    width: min(
+      calc(100vw * var(--mockup-frame-factor)),
+      calc(100vh * var(--index-frame-ratio) * var(--mockup-frame-factor))
+    );
   }
 
   .mockup-stage .mockup-art {
@@ -61,9 +70,19 @@ body {
   }
 
   body.mockup-scroll .mockup-stage {
-    width: 100%;
+    width: min(
+      calc(100vw * var(--mockup-frame-factor)),
+      calc(100vh * var(--index-frame-ratio) * var(--mockup-frame-factor))
+    );
   }
 }
+
+.page-studio { --mockup-frame-factor: 1.01400; }
+.page-professionisti { --mockup-frame-factor: 1.05500; }
+.page-settori { --mockup-frame-factor: 0.99306; }
+.page-metodo { --mockup-frame-factor: 1.01225; }
+.page-tariffe { --mockup-frame-factor: 1.01426; }
+.page-sedi { --mockup-frame-factor: 1.05500; }
 
 .mockup-links {
   position: absolute;
@@ -87,6 +106,7 @@ body {
   user-select: text;
   -webkit-user-select: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   font-family: "FreedomFactoryFont", "Courier New", monospace;
   text-shadow: none;
   opacity: 1;
@@ -97,29 +117,36 @@ body {
 
 .selectable-text-layer .word {
   position: absolute;
+  display: inline-block;
   pointer-events: auto;
   user-select: text;
   -webkit-user-select: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   font-family: "FreedomFactoryFont", "Courier New", monospace;
   line-height: 1;
   white-space: nowrap;
   overflow: visible;
   z-index: 1;
+  transform-origin: left top;
 }
 
 .selectable-text-layer.has-word-ocr .sel {
   pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .selectable-text-layer .sel::selection {
-  color: #000;
-  background: rgba(245, 197, 24, 0.78);
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background: rgba(245, 197, 24, 0.38);
 }
 
 .selectable-text-layer .word::selection {
-  color: #000;
-  background: rgba(245, 197, 24, 0.78);
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background: rgba(245, 197, 24, 0.38);
 }
 
 .sel-title {
@@ -252,6 +279,12 @@ body {
   transition: color 0.2s ease;
 }
 
+.mockup-links a::before {
+  content: "";
+  position: absolute;
+  inset: -45% -24%;
+}
+
 .mockup-links a:hover,
 .mockup-links a:focus-visible {
   color: transparent;
@@ -267,7 +300,7 @@ body {
     transform: translate(-50%, -50%);
     color: transparent;
     font-family: "FreedomFactoryFont", "Courier New", monospace;
-    font-size: min(1.55vw, 22px);
+    font-size: min(1.55cqw, 22px);
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0;
@@ -279,17 +312,6 @@ body {
     transition: opacity 0.16s ease, filter 0.16s ease, text-shadow 0.16s ease;
   }
 
-  .desk-nav a:hover::after,
-  .desk-nav a:focus-visible::after {
-    color: #f5c518;
-    opacity: 1;
-    filter: saturate(1.08) contrast(1.08);
-    text-shadow:
-      0 0 1px rgba(245, 197, 24, 0.28),
-      0 0 6px rgba(245, 197, 24, 0.16),
-      0 0 10px rgba(245, 197, 24, 0.08);
-  }
-
   .desk-nav .home::after { content: "HOME"; }
   .desk-nav .avvocati::after { content: "AVVOCATI"; }
   .desk-nav .settori::after { content: "SETTORI"; }
@@ -298,44 +320,44 @@ body {
   .desk-nav .sedi::after { content: "SEDI"; }
   .desk-nav .blog::after { content: "BLOG"; }
 
-  .page-metodo .desk-nav a::after { top: 48%; font-size: min(1.5vw, 21px); }
-  .page-studio .desk-nav a::after { top: 48%; font-size: min(1.5vw, 21px); }
-  .page-sedi .desk-nav a::after { top: 48%; font-size: min(1.5vw, 21px); }
-  .page-professionisti .desk-nav a::after { top: 48%; font-size: min(1.5vw, 21px); }
+  .page-metodo .desk-nav a::after { top: 48%; font-size: min(1.5cqw, 21px); }
+  .page-studio .desk-nav a::after { top: 48%; font-size: min(1.5cqw, 21px); }
+  .page-sedi .desk-nav a::after { top: 48%; font-size: min(1.5cqw, 21px); }
+  .page-professionisti .desk-nav a::after { top: 48%; font-size: min(1.5cqw, 21px); }
 }
 
 .desk-nav {
-  z-index: 2;
+  z-index: 6;
 }
 
-.desk-nav a { height: 2.41%; }
+.desk-nav a { height: 1.66%; }
 
-.page-professionisti .desk-nav a { top: 92.06%; }
-.page-professionisti .desk-nav .home { left: 18.47%; width: 5.27%; }
-.page-professionisti .desk-nav .avvocati { left: 26.28%; width: 9.15%; }
-.page-professionisti .desk-nav .settori { left: 37.96%; width: 7.91%; }
-.page-professionisti .desk-nav .metodo { left: 48.41%; width: 7.12%; }
-.page-professionisti .desk-nav .tariffe { left: 58.07%; width: 8.27%; }
-.page-professionisti .desk-nav .sedi { left: 68.87%; width: 5.00%; }
-.page-professionisti .desk-nav .blog { left: 76.41%; width: 5.14%; }
+.page-professionisti .desk-nav a { top: 92.295%; }
+.page-professionisti .desk-nav .home { left: 19.136%; width: 3.924%; }
+.page-professionisti .desk-nav .avvocati { left: 26.940%; width: 7.826%; }
+.page-professionisti .desk-nav .settori { left: 38.624%; width: 6.614%; }
+.page-professionisti .desk-nav .metodo { left: 49.096%; width: 5.776%; }
+.page-professionisti .desk-nav .tariffe { left: 58.730%; width: 6.922%; }
+.page-professionisti .desk-nav .sedi { left: 69.533%; width: 3.660%; }
+.page-professionisti .desk-nav .blog { left: 76.389%; width: 5.159%; top: 92.057%; height: 2.444%; }
 
-.page-sedi .desk-nav a { top: 86.35%; }
-.page-sedi .desk-nav .home { left: 16.89%; width: 5.27%; }
-.page-sedi .desk-nav .avvocati { left: 24.69%; width: 9.15%; }
-.page-sedi .desk-nav .settori { left: 36.38%; width: 7.91%; }
-.page-sedi .desk-nav .metodo { left: 46.83%; width: 7.12%; }
-.page-sedi .desk-nav .tariffe { left: 56.48%; width: 8.27%; }
-.page-sedi .desk-nav .sedi { left: 67.28%; width: 5.00%; }
-.page-sedi .desk-nav .blog { left: 74.82%; width: 5.14%; }
+.page-sedi .desk-nav a { top: 86.592%; height: 1.629%; }
+.page-sedi .desk-nav .home { left: 17.549%; width: 3.924%; }
+.page-sedi .desk-nav .avvocati { left: 25.353%; width: 7.826%; }
+.page-sedi .desk-nav .settori { left: 37.037%; width: 6.614%; }
+.page-sedi .desk-nav .metodo { left: 47.509%; width: 5.776%; }
+.page-sedi .desk-nav .tariffe { left: 57.143%; width: 6.922%; }
+.page-sedi .desk-nav .sedi { left: 67.945%; width: 3.660%; }
+.page-sedi .desk-nav .blog { left: 74.802%; width: 5.159%; top: 86.354%; height: 2.444%; }
 
-.page-metodo .desk-nav a { top: 94.34%; height: 2.34%; }
-.page-metodo .desk-nav .home { left: 18.47%; width: 5.27%; }
-.page-metodo .desk-nav .avvocati { left: 26.28%; width: 9.15%; }
-.page-metodo .desk-nav .settori { left: 37.96%; width: 7.91%; }
-.page-metodo .desk-nav .metodo { left: 48.41%; width: 7.12%; }
-.page-metodo .desk-nav .tariffe { left: 58.07%; width: 8.27%; }
-.page-metodo .desk-nav .sedi { left: 68.87%; width: 5.00%; }
-.page-metodo .desk-nav .blog { left: 76.41%; width: 5.14%; }
+.page-metodo .desk-nav a { top: 94.507%; height: 1.662%; }
+.page-metodo .desk-nav .home { left: 19.136%; width: 3.924%; }
+.page-metodo .desk-nav .avvocati { left: 26.940%; width: 7.826%; }
+.page-metodo .desk-nav .settori { left: 38.624%; width: 6.614%; }
+.page-metodo .desk-nav .metodo { left: 49.096%; width: 5.776%; }
+.page-metodo .desk-nav .tariffe { left: 58.708%; width: 6.944%; }
+.page-metodo .desk-nav .sedi { left: 69.533%; width: 3.660%; }
+.page-metodo .desk-nav .blog { left: 76.389%; width: 5.159%; top: 94.168%; height: 2.679%; }
 
 .page-studio .desk-nav a { top: 94.34%; height: 2.34%; }
 .page-studio .desk-nav .home { left: 18.47%; width: 5.27%; }
