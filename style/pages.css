@@ -1,0 +1,1283 @@
+/* ==========================
+   INNER PAGES — pages.css
+   Shared styles for all inner pages of Studio Legale Freedom Factory.
+   Loaded alongside main.css. Overrides homepage-specific layout.
+   ========================== */
+
+/* ================================================================
+   1. SCALED-CONTAINER OVERRIDE FOR INNER PAGES
+   ================================================================ */
+
+body.inner-page .scaled-container {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 70px 18px;
+  grid-template-areas: none !important;
+  grid-template-columns: unset !important;
+  gap: 0;
+}
+
+/* ================================================================
+   FINAL MOCKUP ALIGNMENT OVERRIDES
+   Desktop pages are built on the supplied 4536x2946 comps, scaled
+   to a 1440px artboard by main.js.
+   ================================================================ */
+
+body.inner-page .scaled-container {
+  position: absolute !important;
+  width: 1440px !important;
+  height: 935px !important;
+  padding: 70px 50px 34px !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+body.inner-page .page-title-wrap {
+  margin-bottom: 0;
+}
+
+body.inner-page .page-title-img {
+  height: 82px;
+  max-width: 760px;
+}
+
+body.inner-page .studio-content,
+body.inner-page .page-text {
+  width: 100%;
+  max-width: 1285px;
+  flex: 0 0 auto;
+  margin-top: 92px;
+  font-size: 21px;
+  line-height: 1.52;
+  letter-spacing: 1px;
+  word-spacing: 8px;
+  text-align: left;
+}
+
+body.inner-page .page-text p {
+  margin-bottom: 18px;
+}
+
+body.inner-page .page-nav {
+  margin-top: auto;
+  padding-top: 0;
+  gap: 38px;
+}
+
+body.inner-page .page-nav a {
+  color: #000;
+  background: #fff;
+  border: 0;
+  border-radius: 18px;
+  padding: 0 12px 2px;
+  font-size: 19px;
+  line-height: 24px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-decoration: underline !important;
+}
+
+body.inner-page .page-nav a:hover,
+body.inner-page .page-nav a.active {
+  color: #000 !important;
+  background: #fff;
+}
+
+body.template-professionisti .scaled-container,
+body.template-sedi .scaled-container {
+  padding: 42px 50px 36px !important;
+}
+
+body.template-professionisti .page-title-img {
+  height: 82px;
+  max-width: 800px;
+}
+
+body.template-professionisti .lawyers-grid {
+  width: 100%;
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  margin-top: 52px;
+}
+
+body.template-professionisti .lawyer-card {
+  border: 0;
+}
+
+body.template-professionisti .lawyer-photo-wrap {
+  height: 592px;
+  flex: none;
+  background: #111;
+}
+
+body.template-professionisti .lawyer-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body.template-professionisti .lawyer-card.roberto .lawyer-photo-wrap img {
+  object-position: 58% center;
+}
+
+body.template-professionisti .lawyer-card.antonia .lawyer-photo-wrap img {
+  object-position: center center;
+}
+
+body.template-professionisti .lawyer-card.filippo .lawyer-photo-wrap img {
+  object-position: center center;
+}
+
+body.template-professionisti .lawyer-overlay-top {
+  top: 18px;
+  left: 18px;
+  right: auto;
+  padding: 0;
+  background: transparent;
+}
+
+body.template-professionisti .lawyer-overlay-top .first-name,
+body.template-professionisti .lawyer-overlay-top .last-name {
+  display: inline;
+  padding: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+body.template-professionisti .lawyer-overlay-top .last-name {
+  color: #333;
+  margin-left: 12px;
+}
+
+body.template-professionisti .lawyer-overlay-top .role-badge {
+  position: absolute;
+  left: 265px;
+  top: 47px;
+  color: #f5ed00;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: none;
+}
+
+body.template-professionisti .lawyer-overlay-desc,
+body.template-professionisti .lawyer-overlay-desc-topright {
+  width: 168px;
+  padding: 2px 5px;
+  background: #000;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.42;
+  font-style: normal;
+  text-align: left;
+}
+
+body.template-professionisti .lawyer-card.roberto .lawyer-overlay-desc {
+  top: 84px;
+  bottom: auto;
+  left: 20px;
+}
+
+body.template-professionisti .lawyer-overlay-desc-topright {
+  top: 35px;
+  left: 56px;
+  right: auto;
+}
+
+body.template-professionisti .lawyer-overlay-top-right {
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  border-radius: 18px;
+  background: #000;
+  padding: 3px 12px 5px;
+  text-align: center;
+}
+
+body.template-professionisti .lawyer-overlay-top-right .first-name,
+body.template-professionisti .lawyer-overlay-top-right .last-name {
+  display: inline;
+  color: #f5ed00;
+  font-size: 31px;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+body.template-professionisti .lawyer-overlay-top-right .last-name {
+  color: #fff;
+  margin-left: 10px;
+}
+
+body.template-professionisti .lawyer-card.filippo .lawyer-overlay-desc {
+  top: 95px;
+  bottom: auto;
+  left: 40px;
+}
+
+body.template-professionisti .lawyer-overlay-bottom-center {
+  left: 8px;
+  right: 8px;
+  bottom: 16px;
+  padding: 0 10px 5px;
+  background: #000;
+  border-radius: 20px;
+}
+
+body.template-professionisti .lawyer-overlay-bottom-center .full-name {
+  color: #fff;
+  font-size: 34px;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  text-shadow: none;
+}
+
+body.template-professionisti .lawyer-overlay-bottom-center .full-name::first-letter {
+  color: inherit;
+}
+
+body.template-professionisti .lawyer-card.antonia .lawyer-overlay-bottom-center .full-name {
+  color: #fff;
+}
+
+body.template-professionisti .lawyer-card.antonia .lawyer-overlay-bottom-center .full-name::before {
+  content: "ANTONIA ";
+  color: red;
+}
+
+body.template-professionisti .lawyer-card.antonia .lawyer-overlay-bottom-center .full-name {
+  font-size: 0;
+}
+
+body.template-professionisti .lawyer-card.antonia .lawyer-overlay-bottom-center .full-name::after {
+  content: "ZUNICA";
+  color: #fff;
+  font-size: 34px;
+}
+
+body.template-professionisti .lawyer-card.antonia .lawyer-overlay-bottom-center .full-name::before {
+  font-size: 34px;
+}
+
+body.template-professionisti .lawyer-contact {
+  padding: 21px 0 0;
+  font-size: 19px;
+  line-height: 1.15;
+  opacity: 1;
+}
+
+body.template-sedi .page-title-img {
+  height: 70px;
+  max-width: 330px;
+}
+
+body.template-sedi .sedi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px;
+  width: 100%;
+  flex: 0 0 auto;
+  margin-top: 128px;
+}
+
+body.template-sedi .city-name {
+  font-size: 37px;
+  line-height: 1;
+  letter-spacing: 5px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+body.template-sedi .city-photo-wrap {
+  height: 338px;
+  margin-bottom: 20px;
+}
+
+body.template-sedi .city-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body.template-sedi .city-address-pill {
+  display: block;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  background: transparent;
+  border-radius: 0;
+  font-size: 19px;
+  line-height: 1.05;
+  text-align: center;
+}
+
+body.template-sedi .city-info {
+  color: #fff;
+  font-size: 19px;
+  line-height: 1.05;
+  text-align: center;
+}
+
+body.page-scrollable .scaled-container {
+  padding-top: 45px !important;
+}
+
+body.page-scrollable .page-title-img {
+  height: 72px;
+}
+
+body.page-scrollable .settori-intro,
+body.page-scrollable .settori-section-title,
+body.page-scrollable .settori-list,
+body.page-scrollable .legal-text {
+  font-size: 19px;
+  line-height: 1.48;
+  letter-spacing: 1px;
+  word-spacing: 7px;
+}
+
+body.page-scrollable .settori-section {
+  margin-bottom: 18px;
+}
+
+@media screen and (max-width: 1024px) {
+  body.inner-page .scaled-container {
+    width: 1440px !important;
+    height: 935px !important;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  body.inner-page .scaled-container,
+  body.template-professionisti .scaled-container,
+  body.template-sedi .scaled-container {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100vh;
+    padding: 20px 15px 34px !important;
+    position: static !important;
+  }
+
+  body.inner-page .page-title-img {
+    height: 42px;
+  }
+
+  body.inner-page .studio-content,
+  body.inner-page .page-text {
+    margin-top: 58px;
+    font-size: 18px;
+    line-height: 1.45;
+    letter-spacing: 1px;
+    word-spacing: 4px;
+  }
+
+  body.template-professionisti .lawyers-grid,
+  body.template-sedi .sedi-grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    margin-top: 55px;
+  }
+
+  body.template-professionisti .lawyer-photo-wrap {
+    height: 525px;
+  }
+
+  body.template-sedi .city-photo-wrap {
+    height: 330px;
+  }
+}
+
+/* ================================================================
+   2. PAGE TITLE — SVG image version
+   ================================================================ */
+
+.page-title-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 22px;
+  flex-shrink: 0;
+}
+
+.page-title-img {
+  height: 78px;
+  max-width: 85%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ================================================================
+   3. PAGE TITLE — CSS-only version (Note Legali, Privacy, Cookies)
+   ================================================================ */
+
+.page-title-css {
+  font-family: "FreedomFactoryFont", "Courier New", monospace;
+  font-size: 3.4rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #fff;
+  padding: 7px 28px;
+  display: inline-block;
+  margin-bottom: 28px;
+  flex-shrink: 0;
+}
+
+/* ================================================================
+   4. CONTENT TEXT
+   ================================================================ */
+
+.page-text {
+  font-size: 0.88rem;
+  line-height: 1.9;
+  text-align: justify;
+  width: 100%;
+  flex: 1;
+}
+
+.page-text p {
+  margin-bottom: 1.1em;
+}
+
+.page-text a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.page-text a:hover {
+  color: #f5c518;
+}
+
+/* ================================================================
+   5. BOTTOM NAVIGATION BAR
+   ================================================================ */
+
+.page-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-top: 14px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.page-nav a {
+  font-family: "FreedomFactoryFont", "Courier New", monospace;
+  font-size: 0.82rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1.5px solid #fff;
+  padding: 4px 13px;
+  text-decoration: none !important;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.page-nav a:hover,
+.page-nav a.active {
+  color: #000 !important;
+  background-color: #fff;
+}
+
+/* ================================================================
+   6. STUDIO PAGE
+   ================================================================ */
+
+.studio-content {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ================================================================
+   7. PROFESSIONISTI PAGE
+   ================================================================ */
+
+.lawyers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+.lawyer-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.lawyer-card:last-child {
+  border-right: none;
+}
+
+.lawyer-photo-wrap {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.lawyer-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  max-width: unset;
+  max-height: unset;
+}
+
+/* Roberto: name overlay top-left */
+.lawyer-overlay-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 14px 10px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0) 100%);
+}
+
+.lawyer-overlay-top .first-name {
+  display: block;
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+.lawyer-overlay-top .last-name {
+  display: inline-block;
+  font-size: 1.05rem;
+  letter-spacing: 2px;
+  color: #000;
+  background-color: #fff;
+  padding: 1px 8px;
+  border-radius: 2px;
+  margin-top: 3px;
+}
+
+.lawyer-overlay-top .role-badge {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: #f5c518;
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+
+/* Filippo: name overlay top-right with yellow background */
+.lawyer-overlay-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 14px;
+  background-color: #f5c518;
+  text-align: right;
+}
+
+.lawyer-overlay-top-right .first-name {
+  display: block;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: #000;
+  line-height: 1.2;
+}
+
+.lawyer-overlay-top-right .last-name {
+  display: block;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: #000;
+}
+
+/* Description overlaid on photo (Roberto & Filippo — bottom-left stripe) */
+.lawyer-overlay-desc {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 42%;
+  padding: 10px 10px 10px 12px;
+  background: rgba(0,0,0,0.6);
+  font-size: 0.68rem;
+  line-height: 1.55;
+  font-style: italic;
+  text-align: left;
+}
+
+/* Filippo: description at bottom-left */
+.lawyer-card.filippo .lawyer-overlay-desc {
+  left: 0;
+  right: auto;
+  bottom: 0;
+}
+
+/* Antonia: full-photo card with center name at bottom */
+.lawyer-card.antonia .lawyer-photo-wrap {
+  flex: 1;
+}
+
+.lawyer-overlay-bottom-center {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 14px 10px 10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
+}
+
+.lawyer-overlay-bottom-center .full-name {
+  display: inline-block;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  color: #fff;
+  text-shadow: 2px 2px 6px #000;
+  line-height: 1.2;
+}
+
+/* Antonia: description overlaid top-right */
+.lawyer-overlay-desc-topright {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 44%;
+  background: rgba(0,0,0,0.62);
+  padding: 8px 10px;
+  font-size: 0.68rem;
+  line-height: 1.55;
+  font-style: italic;
+  text-align: left;
+}
+
+/* Contact row below photo */
+.lawyer-contact {
+  font-size: 0.72rem;
+  padding: 8px 14px 6px;
+  line-height: 1.9;
+  opacity: 0.88;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+/* ================================================================
+   8. SEDI PAGE
+   ================================================================ */
+
+.sedi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+.city-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.city-name {
+  font-size: 1.75rem;
+  letter-spacing: 3px;
+  margin-bottom: 7px;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.city-photo-wrap {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+  margin-bottom: 8px;
+}
+
+.city-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  max-width: unset;
+  max-height: unset;
+}
+
+.city-address-pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #000;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1px 10px;
+  margin-bottom: 4px;
+  width: fit-content;
+}
+
+.city-info {
+  font-size: 0.73rem;
+  line-height: 1.85;
+  flex-shrink: 0;
+}
+
+/* ================================================================
+   9. SCROLLABLE PAGES (Settori, Privacy Policy)
+   ================================================================ */
+
+body.page-scrollable,
+body.page-scrollable html {
+  overflow-y: auto !important;
+  height: auto !important;
+}
+
+html:has(body.page-scrollable) {
+  overflow-y: auto !important;
+  height: auto !important;
+}
+
+html:has(body.page-scrollable),
+body.page-scrollable {
+  overflow-x: hidden !important;
+}
+
+body.page-scrollable .viewport-wrapper {
+  overflow-y: auto !important;
+  height: auto !important;
+  min-height: 100vh;
+}
+
+body.page-scrollable .scaled-container {
+  position: static !important;
+  transform: none !important;
+  left: auto !important;
+  top: auto !important;
+  width: 100% !important;
+  max-width: 1440px !important;
+  margin: 0 auto !important;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px 100px 60px !important;
+  grid-template-areas: none !important;
+  grid-template-columns: unset !important;
+}
+
+/* Settori — section layout */
+.settori-intro {
+  font-size: 0.87rem;
+  line-height: 1.9;
+  text-align: justify;
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.settori-section {
+  width: 100%;
+  margin-bottom: 22px;
+}
+
+.settori-section-title {
+  font-size: 0.87rem;
+  line-height: 1.8;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.settori-section-title u {
+  letter-spacing: 1px;
+}
+
+.settori-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.settori-list {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.settori-list li::before {
+  content: "– ";
+}
+
+/* ================================================================
+   10. LEGAL PAGES (Note Legali, Privacy Policy, Cookies)
+   ================================================================ */
+
+.legal-content {
+  width: 100%;
+}
+
+.legal-section {
+  margin-bottom: 28px;
+  width: 100%;
+}
+
+.legal-section-title {
+  font-size: 1.25rem;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.legal-text {
+  font-size: 0.87rem;
+  line-height: 1.9;
+  text-align: justify;
+}
+
+.legal-text p {
+  margin-bottom: 0.9em;
+}
+
+.legal-text a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.legal-text a:hover {
+  color: #f5c518;
+}
+
+/* Cookies — category titles */
+.cookie-cat-title {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 22px 0 8px;
+}
+
+/* Privacy — table */
+.privacy-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  margin-top: 16px;
+}
+
+.privacy-table th,
+.privacy-table td {
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 6px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.privacy-table th {
+  background-color: rgba(255,255,255,0.1);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+/* ================================================================
+   11. TABLET OVERRIDE (≤1024px)
+   ================================================================ */
+
+@media screen and (max-width: 1024px) {
+  body.inner-page .scaled-container {
+    padding: 30px 50px 20px !important;
+  }
+
+  body.page-scrollable .scaled-container {
+    padding: 30px 60px 50px !important;
+  }
+
+  .page-title-img {
+    height: 110px;
+    max-width: 90%;
+  }
+
+  .page-title-css {
+    font-size: 5rem;
+  }
+
+  .page-text {
+    font-size: 1.5rem;
+    line-height: 1.95;
+  }
+
+  .page-nav {
+    gap: 18px;
+  }
+
+  .page-nav a {
+    font-size: 1.2rem;
+    padding: 6px 16px;
+    letter-spacing: 2px;
+  }
+
+  /* Professionisti tablet */
+  .lawyers-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .lawyer-overlay-top .first-name { font-size: 2rem; }
+  .lawyer-overlay-top .last-name { font-size: 1.8rem; }
+  .lawyer-overlay-top .role-badge { font-size: 1.2rem; }
+  .lawyer-overlay-desc { font-size: 1.1rem; width: 40%; }
+  .lawyer-overlay-desc-topright { font-size: 1.1rem; width: 42%; }
+  .lawyer-overlay-bottom-center .full-name { font-size: 2.5rem; }
+  .lawyer-overlay-top-right .first-name { font-size: 1.7rem; }
+  .lawyer-overlay-top-right .last-name { font-size: 1.4rem; }
+  .lawyer-contact { font-size: 1.3rem; }
+
+  /* Sedi tablet */
+  .sedi-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .city-name { font-size: 3rem; }
+  .city-address-pill { font-size: 1.2rem; padding: 3px 15px; }
+  .city-info { font-size: 1.2rem; }
+
+  /* Settori tablet */
+  .settori-cols { grid-template-columns: 1fr; }
+  .settori-intro { font-size: 1.5rem; }
+  .settori-section-title { font-size: 1.5rem; }
+  .settori-list { font-size: 1.4rem; }
+
+  /* Legal tablet */
+  .legal-section-title { font-size: 2rem; }
+  .legal-text { font-size: 1.4rem; }
+  .cookie-cat-title { font-size: 2.2rem; }
+}
+
+/* ================================================================
+   12. MOBILE (≤440px)
+   ================================================================ */
+
+@media screen and (max-width: 440px) {
+
+  /* All inner pages — flex column no transform (handled by main.js already) */
+  body.inner-page .scaled-container {
+    padding: 20px 15px 30px !important;
+  }
+
+  body.page-scrollable .scaled-container {
+    padding: 20px 15px 40px !important;
+  }
+
+  /* Title */
+  .page-title-wrap {
+    margin-bottom: 18px;
+  }
+
+  .page-title-img {
+    height: 42px;
+    max-width: 88%;
+  }
+
+  .page-title-css {
+    font-size: 2.1rem;
+    letter-spacing: 4px;
+    padding: 5px 18px;
+    margin-bottom: 18px;
+  }
+
+  /* Text */
+  .page-text {
+    font-size: 1.15rem;
+    line-height: 1.85;
+  }
+
+  /* Bottom nav hidden on mobile (hamburger handles navigation) */
+  .page-nav {
+    display: none;
+  }
+
+  /* ---- Professionisti mobile ---- */
+  .lawyers-grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .lawyer-photo-wrap {
+    height: 420px;
+    flex: none;
+  }
+
+  .lawyer-overlay-top .first-name { font-size: 1.5rem; }
+  .lawyer-overlay-top .last-name { font-size: 1.35rem; }
+  .lawyer-overlay-top .role-badge { font-size: 1rem; }
+  .lawyer-overlay-desc { font-size: 1.05rem; line-height: 1.5; width: 48%; }
+  .lawyer-overlay-desc-topright { font-size: 1.05rem; width: 48%; }
+  .lawyer-overlay-bottom-center .full-name { font-size: 1.9rem; letter-spacing: 2px; }
+  .lawyer-overlay-top-right .first-name { font-size: 1.3rem; }
+  .lawyer-overlay-top-right .last-name { font-size: 1.1rem; }
+  .lawyer-contact { font-size: 1.1rem; padding: 10px 8px; }
+
+  /* ---- Sedi mobile ---- */
+  .sedi-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .city-name {
+    font-size: 2.3rem;
+    letter-spacing: 4px;
+    text-align: center;
+  }
+
+  .city-address-pill {
+    font-size: 0.9rem;
+    margin: 0 auto 8px;
+    display: block;
+    text-align: center;
+    width: fit-content;
+  }
+
+  .city-photo-wrap {
+    height: 320px;
+    flex: none;
+    margin-bottom: 8px;
+  }
+
+  .city-info {
+    font-size: 1.05rem;
+    text-align: center;
+  }
+
+  /* ---- Settori mobile ---- */
+  .settori-cols {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .settori-intro { font-size: 1.15rem; }
+  .settori-section-title { font-size: 1.15rem; }
+  .settori-list { font-size: 1.1rem; }
+
+  /* ---- Legal pages mobile ---- */
+  .legal-section-title { font-size: 1.5rem; letter-spacing: 2px; }
+  .legal-text { font-size: 1.1rem; }
+  .cookie-cat-title { font-size: 1.6rem; }
+}
+
+/* Final precedence block */
+body.inner-page .scaled-container {
+  position: absolute !important;
+  width: 1440px !important;
+  height: 935px !important;
+  padding: 70px 50px 34px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+body.inner-page .page-title-wrap { margin-bottom: 0 !important; }
+body.inner-page .page-title-img { height: 82px !important; max-width: 760px !important; }
+
+body.inner-page .studio-content,
+body.inner-page .page-text {
+  width: 100% !important;
+  max-width: 1285px !important;
+  flex: 0 0 auto !important;
+  margin-top: 92px !important;
+  font-size: 21px !important;
+  line-height: 1.52 !important;
+  letter-spacing: 1px !important;
+  word-spacing: 8px !important;
+  text-align: left !important;
+}
+
+body.inner-page .page-nav {
+  margin-top: auto !important;
+  padding-top: 0 !important;
+  gap: 38px !important;
+}
+
+body.inner-page .page-nav a {
+  color: #000 !important;
+  background: #fff !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  padding: 0 12px 2px !important;
+  font-size: 19px !important;
+  line-height: 24px !important;
+  letter-spacing: 1px !important;
+  font-weight: bold !important;
+  text-decoration: underline !important;
+}
+
+body.template-professionisti .scaled-container,
+body.template-sedi .scaled-container { padding: 42px 50px 36px !important; }
+
+body.template-professionisti .lawyers-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 35px !important;
+  margin-top: 52px !important;
+  flex: 0 0 auto !important;
+}
+
+body.template-professionisti .lawyer-photo-wrap { height: 592px !important; flex: none !important; }
+body.template-professionisti .lawyer-contact { font-size: 19px !important; line-height: 1.15 !important; padding-top: 21px !important; }
+body.template-professionisti .lawyer-card { border: 0 !important; }
+body.template-professionisti .lawyer-photo-wrap img { object-fit: cover !important; }
+body.template-professionisti .lawyer-overlay-top {
+  top: 18px !important;
+  left: 18px !important;
+  right: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+body.template-professionisti .lawyer-overlay-top .first-name,
+body.template-professionisti .lawyer-overlay-top .last-name {
+  display: inline !important;
+  padding: 0 !important;
+  background: transparent !important;
+  font-size: 36px !important;
+  line-height: 1 !important;
+  letter-spacing: 1px !important;
+}
+body.template-professionisti .lawyer-overlay-top .first-name { color: #fff !important; }
+body.template-professionisti .lawyer-overlay-top .last-name { color: #333 !important; margin-left: 12px !important; }
+body.template-professionisti .lawyer-overlay-top .role-badge {
+  position: absolute !important;
+  left: 265px !important;
+  top: 47px !important;
+  color: #f5ed00 !important;
+  font-size: 16px !important;
+  text-transform: none !important;
+}
+body.template-professionisti .lawyer-overlay-desc,
+body.template-professionisti .lawyer-overlay-desc-topright {
+  width: 168px !important;
+  padding: 2px 5px !important;
+  background: #000 !important;
+  font-size: 13px !important;
+  line-height: 1.42 !important;
+  font-style: normal !important;
+}
+body.template-professionisti .lawyer-card.roberto .lawyer-overlay-desc {
+  top: 84px !important;
+  bottom: auto !important;
+  left: 20px !important;
+}
+body.template-professionisti .lawyer-overlay-desc-topright {
+  top: 35px !important;
+  left: 56px !important;
+  right: auto !important;
+}
+body.template-professionisti .lawyer-overlay-top-right {
+  top: 16px !important;
+  left: 16px !important;
+  right: 16px !important;
+  border-radius: 18px !important;
+  background: #000 !important;
+  padding: 3px 12px 5px !important;
+  text-align: center !important;
+}
+body.template-professionisti .lawyer-overlay-top-right .first-name,
+body.template-professionisti .lawyer-overlay-top-right .last-name {
+  display: inline !important;
+  font-size: 31px !important;
+  line-height: 1 !important;
+  letter-spacing: 1px !important;
+}
+body.template-professionisti .lawyer-overlay-top-right .first-name,
+body.template-professionisti .lawyer-overlay-top-right .last-name { color: #f5ed00 !important; }
+body.template-professionisti .lawyer-overlay-top-right .last-name { margin-left: 10px !important; }
+body.template-professionisti .lawyer-card.filippo .lawyer-overlay-desc {
+  top: 95px !important;
+  bottom: auto !important;
+  left: 40px !important;
+}
+body.template-professionisti .lawyer-overlay-bottom-center {
+  left: 8px !important;
+  right: 8px !important;
+  bottom: 16px !important;
+  padding: 0 10px 5px !important;
+  background: #000 !important;
+  border-radius: 20px !important;
+}
+body.template-professionisti .lawyer-card.antonia .lawyer-overlay-bottom-center .full-name {
+  font-size: 0 !important;
+}
+body.template-professionisti .lawyer-card.antonia .lawyer-overlay-bottom-center .full-name::before {
+  content: "ANTONIA ";
+  color: red;
+  font-size: 34px;
+}
+body.template-professionisti .lawyer-card.antonia .lawyer-overlay-bottom-center .full-name::after {
+  content: "ZUNICA";
+  color: #fff;
+  font-size: 34px;
+}
+
+body.template-sedi .page-title-img { height: 70px !important; max-width: 330px !important; }
+body.template-sedi .sedi-grid {
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 36px !important;
+  margin-top: 128px !important;
+  flex: 0 0 auto !important;
+}
+body.template-sedi .city-name { font-size: 37px !important; text-align: center !important; margin-bottom: 22px !important; }
+body.template-sedi .city-photo-wrap { height: 338px !important; margin-bottom: 20px !important; }
+body.template-sedi .city-address-pill,
+body.template-sedi .city-info {
+  display: block !important;
+  color: #fff !important;
+  background: transparent !important;
+  font-size: 19px !important;
+  line-height: 1.05 !important;
+  text-align: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.page-scrollable .scaled-container {
+  position: static !important;
+  transform: none !important;
+  width: 100% !important;
+  max-width: 1440px !important;
+  height: auto !important;
+  padding: 45px 70px 60px !important;
+}
+
+@media screen and (max-width: 440px) {
+  body.inner-page .scaled-container,
+  body.template-professionisti .scaled-container,
+  body.template-sedi .scaled-container {
+    width: 100% !important;
+    height: auto !important;
+    position: static !important;
+    padding: 20px 15px 34px !important;
+  }
+
+  body.inner-page .page-title-img { height: 42px !important; }
+  body.inner-page .studio-content,
+  body.inner-page .page-text {
+    margin-top: 58px !important;
+    font-size: 18px !important;
+    line-height: 1.45 !important;
+    word-spacing: 4px !important;
+  }
+
+  body.template-professionisti .lawyers-grid,
+  body.template-sedi .sedi-grid {
+    grid-template-columns: 1fr !important;
+    margin-top: 55px !important;
+  }
+
+  body.template-professionisti .lawyer-photo-wrap { height: 525px !important; }
+  body.template-sedi .city-photo-wrap { height: 330px !important; }
+}
