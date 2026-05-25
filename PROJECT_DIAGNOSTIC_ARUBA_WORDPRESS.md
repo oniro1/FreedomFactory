@@ -1,5 +1,5 @@
 # Diagnostica progetto — Aruba WordPress
-> Audit tecnico · Versione 2.0 · Aggiornato: 25/05/2026  
+> Audit tecnico · Versione 2.1 · Aggiornato: 25/05/2026  
 > Scope: `www.studiolegalefreedomfactory.it/` (cartella locale Windows)
 
 ---
@@ -20,7 +20,7 @@ Il progetto adotta un **doppio binario statico + PHP thin wrapper**:
 
 ## 2. Percentuale di completamento
 
-**Il progetto è circa al 90% verso una pubblicazione su Aruba WordPress.**
+**Il progetto è circa al 92% verso una pubblicazione su Aruba WordPress.**
 
 | Area | Stato | % |
 |---|---|---|
@@ -36,6 +36,9 @@ Il progetto adotta un **doppio binario statico + PHP thin wrapper**:
 | Sicurezza pre-deploy | ✅ ver.php eliminato | 95% |
 | Hotspot interni alle immagini | ⚠️ Solo nav overlay, nessun hotspot | 40% |
 | SEO / testo selezionabile | ⚠️ OCR su 6 pagine, 3 mancanti | 65% |
+| Homepage cookie banner | ✅ Completo — una volta sola, allineato email | 100% |
+| Email studio in homepage | ✅ Visibile desktop + mobile, coperta da cookie | 100% |
+| GitHub push | ⚠️ In sospeso (bash timeout) | 0% |
 
 ---
 
@@ -62,7 +65,9 @@ Poi naviga su `http://localhost:8080/studio.php`.
 ### HTML files (source of truth)
 | File | Stato | OCR | WebP |
 |---|---|---|---|
-| `index.html` | ✅ Homepage — NON MODIFICARE | n/a | n/a |
+| `index.html` | ✅ Homepage con cookie banner + email | n/a | n/a |
+| `index-nocookie.html` | ✅ Copia di riferimento (= index.html senza banner attivo) | n/a | n/a |
+| `index-original.html` | ✅ Backup dell'index originale pre-sprint | n/a | n/a |
 | `studio.html` | ✅ Completo | ✅ Collegato | ✅ |
 | `professionisti.html` | ✅ Completo | ✅ Collegato | ✅ |
 | `settori.html` | ✅ Completo (scrollable) | ✅ Collegato | ✅ |
@@ -143,7 +148,52 @@ Le 6 pagine con dati OCR hanno nella loro struttura HTML:
 
 ---
 
-## 7. Child theme — stato attuale
+## 7. Homepage — sistema cookie banner + email
+
+### Comportamento
+- **Cookie banner**: mostrato solo al primo accesso al sito. Dopo aver cliccato "Accetto", il flag `cookiesAccepted: true` viene scritto in `localStorage` e il banner non viene più mostrato su nessuna pagina.
+- **Email studio** (`Info@studiolegalefreedomfactory.it`): visibile nell'area in basso della homepage. Il cookie banner la copre esattamente finché non viene accettato.
+
+### Posizionamento banner
+Il banner usa `position: fixed` con `bottom/left/width` calcolati dinamicamente da `alignCookieBanner()` in `index.html`:
+- **Desktop**: il banner si allinea orizzontalmente alla `.studio-email` (tronca ai bordi sinistro/destro dell'elemento email, non copre copyright né privacy policy)
+- **Mobile**: il banner si allinea alla `.studio-email-mobile`
+- **Scroll**: quando l'email scorre fuori viewport (in qualsiasi direzione), il banner si riposiziona in full-width a `bottom: 0`
+
+```javascript
+function alignCookieBanner() {
+  const isMobile = window.innerWidth <= 440;
+  const emailEl = isMobile
+    ? document.querySelector('.studio-email-mobile')
+    : document.querySelector('.studio-email:not(.studio-email-mobile)');
+  const banner = document.querySelector('.cookie-banner');
+  const rect = emailEl.getBoundingClientRect();
+  const fromBottom = window.innerHeight - rect.bottom;
+  if (fromBottom < 0 || rect.bottom < 0) {
+    banner.style.bottom = '0px'; banner.style.left = '0px'; banner.style.width = '100%';
+    return;
+  }
+  banner.style.bottom = fromBottom + 'px';
+  banner.style.left   = rect.left + 'px';
+  banner.style.width  = rect.width + 'px';
+}
+```
+
+### Layout email
+- **Desktop**: in griglia CSS, riga `"copyright studio-email privacy"` — centrata tra copyright e privacy policy
+- **Mobile**: `div.studio-email-mobile` posizionato nel DOM subito dopo `div.social-mobile`, testo piano senza box
+
+### Design banner
+Sfondo nero pieno (`background-color: #000`), layout a riga singola (`flex-direction: row`), testo + bottoni in una sola linea.
+
+### Come resettare il cookie (dev/test)
+```javascript
+localStorage.removeItem('cookiesAccepted'); location.reload();
+```
+
+---
+
+## 8. Child theme — stato attuale
 
 ### `functions.php` — enqueue completo
 ```
@@ -202,31 +252,40 @@ Per disabilitare xmlrpc e readme, aggiungere in `.htaccess`:
 
 ---
 
-## 9. Problemi aperti
+## 10. Problemi aperti
 
 ### 🔴 Da fare per il launch
 
 1. **Blog URL**: definire l'URL del blog esterno e sostituire `href="#"` (cerca `pointer-events:none` nei menu di tutti gli HTML). Attualmente il link BLOG è visivamente disabilitato (opacity 0.4).
 
+2. **GitHub push**: completare il push su `https://github.com/oniro1/FreedomFactory.git` — i tentativi via bash hanno dato timeout. Farlo manualmente con GitHub Desktop o terminale:
+   ```bash
+   cd "C:\Users\aless\Desktop\Avvocato Moffa\www.studiolegalefreedomfactory.it"
+   git add -A
+   git commit -m "Homepage: email reveal, cookie banner alignment, mobile layout"
+   git push origin main
+   ```
+
 ### 🟡 Miglioramenti consigliati
 
-2. **OCR dati mancanti**: generare overlay.json per `note-legali`, `privacy-policy`, `cookies` e collegare nelle rispettive pagine HTML.
+3. **OCR dati mancanti**: generare overlay.json per `note-legali`, `privacy-policy`, `cookies` e collegare nelle rispettive pagine HTML.
 
-3. **Hotspot interni**: mappare aree cliccabili interne alle immagini (email avvocati, numeri telefono, indirizzi sedi) via `page-nav-overlay` esteso o OCR layer.
+4. **Hotspot interni**: mappare aree cliccabili interne alle immagini (email avvocati, numeri telefono, indirizzi sedi) via `page-nav-overlay` esteso o OCR layer.
 
-4. **Disabilitare xmlrpc.php e readme.html** via .htaccess (sicurezza).
+5. **Disabilitare xmlrpc.php e readme.html** via .htaccess (sicurezza).
 
-5. **robots.txt + sitemap XML**: nessun file presente.
+6. **robots.txt + sitemap XML**: nessun file presente.
 
-6. **Test su Aruba staging**: prima del deploy live, verificare che:
+7. **Test su Aruba staging**: prima del deploy live, verificare che:
    - I PHP thin wrapper in root vengano eseguiti correttamente da Apache
    - I path `./assets/pages/desktop/[page].webp` si risolvano dalla root del dominio
    - Il child theme WP page template (ABSPATH) trovi correttamente gli HTML in root
    - La homepage `index.html` non venga interferita da WordPress
+   - Il `alignCookieBanner()` si comporti correttamente dopo `scaleLayout()` sul server
 
 ---
 
-## 10. Checklist pre-deploy
+## 11. Checklist pre-deploy
 
 - [x] Tutte le 9 inner page HTML complete con image-wrap
 - [x] Tutti i PHP thin wrapper in root (8 righe, `include __DIR__`)
@@ -236,7 +295,13 @@ Per disabilitare xmlrpc e readme, aggiungere in `.htaccess`:
 - [x] `ver.php` eliminato
 - [x] Blog link disabilitato in attesa URL
 - [x] `functions.php` corretto (tutti gli asset enqueued, bug custom.js risolto)
-- [x] `index.html` intatto e non modificato
+- [x] Homepage: email studio visibile (`Info@studiolegalefreedomfactory.it`) — desktop + mobile
+- [x] Cookie banner: una sola volta per sito (localStorage), layout riga singola, sfondo nero pieno
+- [x] Cookie banner: allineato esattamente sull'email, tronca ai bordi (non copre copyright/privacy)
+- [x] Cookie banner: si riposiziona full-width quando l'email scorre fuori schermo
+- [x] `index-original.html` — backup dell'index originale
+- [x] `index-nocookie.html` — copia di riferimento
+- [ ] GitHub push completato
 - [ ] Definire URL blog esterno
 - [ ] Generare dati OCR per note-legali, privacy-policy, cookies
 - [ ] Disabilitare xmlrpc.php via .htaccess
@@ -244,5 +309,5 @@ Per disabilitare xmlrpc e readme, aggiungere in `.htaccess`:
 
 ---
 
-*Versione 2.0 — aggiornata dopo sprint di ottimizzazione del 25/05/2026*  
-*Modifiche sessione: ver.php eliminato · blog disabilitato · OCR collegato (6 pagine) · immagini WebP (-71%) · child theme completato · functions.php corretto*
+*Versione 2.1 — aggiornata dopo sprint homepage del 25/05/2026*  
+*Modifiche sessione: email studio aggiunta · cookie banner redesign (riga singola, sfondo pieno) · allineamento dinamico banner su email (desktop + mobile) · scroll fallback full-width · localStorage una sola volta per sito · index.html sostituito con versione aggiornata · backup index-original.html creato*
