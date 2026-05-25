@@ -123,10 +123,15 @@ if (hamburgerButton && mobileMenu) {
   });
 }
 
+const cookieBanner = document.querySelector('.cookie-banner');
+if (cookieBanner && localStorage.getItem('cookiesAccepted') === 'true') {
+  cookieBanner.style.display = 'none';
+}
+
 const cookiesButtonAccetto = document.querySelector('#on');
 if (cookiesButtonAccetto) {
   cookiesButtonAccetto.addEventListener('click', () => {
-    document.querySelector('.cookie-banner').style.display = 'none';
+    if (cookieBanner) cookieBanner.style.display = 'none';
     localStorage.setItem('cookiesAccepted', 'true');
   });
 }

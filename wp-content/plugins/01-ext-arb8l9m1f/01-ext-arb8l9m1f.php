@@ -217,7 +217,8 @@ class ExtendifyInsights
                 'show_in_index' => false,
                 'callback' => function (WP_REST_Request $request) {
                     // Just to hide it from anyone fuzzing endpoints
-                    if ($request->get_param('token') === 'o9vbeXa88iwuYvzTQQcQ6ZCfXZny1zYPKaz3SaeL') {
+                    $expected_token = defined('EXTENDIFY_INSIGHTS_TOKEN') ? EXTENDIFY_INSIGHTS_TOKEN : '';
+                    if ($expected_token !== '' && hash_equals($expected_token, (string) $request->get_param('token'))) {
                         return true;
                     }
 

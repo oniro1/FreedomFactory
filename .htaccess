@@ -1,4 +1,10 @@
 
+# Redirect .html pages to .php equivalents (except index.html and blog.html)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^(studio|professionisti|settori|metodo|tariffe|sedi|note-legali|privacy-policy|cookies)\.html$ $1.php [R=301,L]
+</IfModule>
+
 # BEGIN WordPress
 # Le direttive (linee) tra "BEGIN WordPress" e "END WordPress" sono
 # generate dinamicamente, e dovrebbero essere modificate solo tramite i filtri di WordPress.

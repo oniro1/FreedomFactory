@@ -1,0 +1,425 @@
+:root {
+  --index-frame-ratio: 1.30317;
+  --mockup-frame-factor: 0.9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "FreedomFactoryFont";
+  src: url("../assets/font/remingtoned_type.ttf") format("truetype"),
+    url("../assets/font/remingtoned_type.woff") format("woff");
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: #000;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Courier New", monospace;
+}
+
+.mockup-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #000;
+}
+
+.mockup-stage {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  container-type: inline-size;
+}
+
+.mockup-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+@media (min-width: 641px) {
+  .mockup-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .mockup-stage {
+    width: min(
+      calc(100vw * var(--mockup-frame-factor)),
+      calc(100vh * var(--index-frame-ratio) * var(--mockup-frame-factor))
+    );
+  }
+
+  .mockup-stage .mockup-art {
+    width: 100%;
+    height: auto;
+  }
+
+  body.mockup-scroll .mockup-page {
+    display: block;
+  }
+
+  body.mockup-scroll .mockup-stage {
+    width: min(
+      calc(100vw * var(--mockup-frame-factor)),
+      calc(100vh * var(--index-frame-ratio) * var(--mockup-frame-factor))
+    );
+  }
+}
+
+.page-studio { --mockup-frame-factor: 1.01400; }
+.page-professionisti { --mockup-frame-factor: 1.05500; }
+.page-settori { --mockup-frame-factor: 0.99306; }
+.page-metodo { --mockup-frame-factor: 1.01225; }
+.page-tariffe { --mockup-frame-factor: 1.01426; }
+.page-sedi { --mockup-frame-factor: 1.05500; }
+
+.mockup-links {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.selectable-text-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.selectable-text-layer .sel {
+  position: absolute;
+  pointer-events: auto;
+  user-select: text;
+  -webkit-user-select: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-family: "FreedomFactoryFont", "Courier New", monospace;
+  text-shadow: none;
+  opacity: 1;
+  white-space: pre-wrap;
+  overflow: hidden;
+  text-align: left;
+}
+
+.selectable-text-layer .word {
+  position: absolute;
+  display: inline-block;
+  pointer-events: auto;
+  user-select: text;
+  -webkit-user-select: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-family: "FreedomFactoryFont", "Courier New", monospace;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: visible;
+  z-index: 1;
+  transform-origin: left top;
+}
+
+.selectable-text-layer.has-word-ocr .sel {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.selectable-text-layer .sel::selection {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background: rgba(245, 197, 24, 0.38);
+}
+
+.selectable-text-layer .word::selection {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background: rgba(245, 197, 24, 0.38);
+}
+
+.sel-title {
+  font-size: clamp(28px, 4.7vw, 68px);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.sel-body {
+  font-size: clamp(10px, 1.47vw, 22px);
+  line-height: 1.42;
+  letter-spacing: 0;
+  word-spacing: 0.35em;
+}
+
+.sel-small {
+  font-size: clamp(9px, 1.35vw, 20px);
+  line-height: 1.15;
+  text-align: center;
+}
+
+.page-studio .sel-title { left: 39.3%; top: 10.2%; width: 21.4%; height: 8%; }
+.page-studio .sel-body { left: 5.4%; top: 28.4%; width: 89.2%; height: 49%; }
+
+.page-metodo .sel-title { left: 39.2%; top: 10.1%; width: 22.5%; height: 8%; }
+.page-metodo .sel-body { left: 5.4%; top: 24.2%; width: 89.2%; height: 64%; }
+
+.page-tariffe .sel-title { left: 37.2%; top: 10.2%; width: 26%; height: 8%; }
+.page-tariffe .sel-body { left: 5.4%; top: 27.2%; width: 89.2%; height: 58%; }
+
+.page-professionisti .sel-title { left: 25%; top: 5.1%; width: 50%; height: 8%; }
+.page-professionisti .sel-card-1 { left: 3.4%; top: 18.4%; width: 29%; height: 64%; }
+.page-professionisti .sel-card-2 { left: 35.5%; top: 18.4%; width: 29%; height: 64%; }
+.page-professionisti .sel-card-3 { left: 67.4%; top: 18.4%; width: 29%; height: 64%; }
+.page-professionisti .sel-contact-1 { left: 9.6%; top: 85.3%; width: 18%; height: 5%; }
+.page-professionisti .sel-contact-2 { left: 43.4%; top: 85.3%; width: 20%; height: 5%; }
+.page-professionisti .sel-contact-3 { left: 72.3%; top: 85.3%; width: 23%; height: 5%; }
+
+.page-sedi .sel-title { left: 42%; top: 7.4%; width: 16%; height: 8%; }
+.page-sedi .sel-city-1 { left: 5.5%; top: 29%; width: 18.8%; height: 48%; }
+.page-sedi .sel-city-2 { left: 27%; top: 29%; width: 21%; height: 48%; }
+.page-sedi .sel-city-3 { left: 51.5%; top: 29%; width: 21%; height: 48%; }
+.page-sedi .sel-city-4 { left: 76.5%; top: 29%; width: 19%; height: 48%; }
+
+.page-settori .sel-title { left: 35.6%; top: 1.8%; width: 30%; height: 4%; }
+.page-settori .sel-body { left: 7.2%; top: 6%; width: 86%; height: 88%; }
+
+@media (max-width: 640px) {
+  .sel-title {
+    font-size: clamp(26px, 10vw, 44px);
+  }
+
+  .sel-body {
+    font-size: clamp(11px, 4.1vw, 18px);
+    line-height: 1.42;
+    word-spacing: 0.2em;
+  }
+
+  .sel-small {
+    font-size: clamp(10px, 4vw, 17px);
+  }
+
+  .page-studio .sel-title,
+  .page-metodo .sel-title,
+  .page-tariffe .sel-title,
+  .page-professionisti .sel-title,
+  .page-sedi .sel-title,
+  .page-settori .sel-title {
+    left: 7%;
+    top: 2.7%;
+    width: 86%;
+    height: 4%;
+    text-align: center;
+  }
+
+  .page-studio .sel-body { left: 7%; top: 20%; width: 86%; height: 56%; }
+  .page-metodo .sel-body { left: 7%; top: 15%; width: 86%; height: 75%; }
+  .page-tariffe .sel-body { left: 7%; top: 20%; width: 86%; height: 72%; }
+  .page-settori .sel-body { left: 7%; top: 6%; width: 86%; height: 90%; }
+
+  .page-professionisti .sel-card-1 { left: 7%; top: 10%; width: 86%; height: 25%; }
+  .page-professionisti .sel-card-2 { left: 7%; top: 39%; width: 86%; height: 25%; }
+  .page-professionisti .sel-card-3 { left: 7%; top: 70%; width: 86%; height: 23%; }
+  .page-professionisti .sel-contact-1 { left: 20%; top: 33%; width: 60%; height: 3%; }
+  .page-professionisti .sel-contact-2 { left: 20%; top: 63%; width: 60%; height: 3%; }
+  .page-professionisti .sel-contact-3 { left: 20%; top: 94%; width: 60%; height: 3%; }
+
+  .page-sedi .sel-city-1 { left: 7%; top: 8%; width: 86%; height: 20%; }
+  .page-sedi .sel-city-2 { left: 7%; top: 31%; width: 86%; height: 20%; }
+  .page-sedi .sel-city-3 { left: 7%; top: 55%; width: 86%; height: 20%; }
+  .page-sedi .sel-city-4 { left: 7%; top: 78%; width: 86%; height: 20%; }
+}
+
+.mockup-nav-visual {
+  position: absolute;
+  left: 50%;
+  bottom: 3.2%;
+  width: 66.6%;
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mockup-nav-visual.is-disabled,
+.mockup-links.is-disabled {
+  display: none;
+}
+
+.mockup-nav-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mockup-links a {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  color: transparent;
+  text-decoration: none;
+  font-family: "FreedomFactoryFont", "Courier New", monospace;
+  font-size: clamp(10px, 1.12vw, 17px);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  transition: color 0.2s ease;
+}
+
+.mockup-links a::before {
+  content: "";
+  position: absolute;
+  inset: -45% -24%;
+}
+
+.mockup-links a:hover,
+.mockup-links a:focus-visible {
+  color: transparent;
+  outline: none;
+}
+
+@media (min-width: 641px) {
+  .desk-nav a::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    transform: translate(-50%, -50%);
+    color: transparent;
+    font-family: "FreedomFactoryFont", "Courier New", monospace;
+    font-size: min(1.55cqw, 22px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0;
+    white-space: nowrap;
+    text-transform: uppercase;
+    opacity: 0;
+    filter: saturate(0.95);
+    text-shadow: none;
+    transition: opacity 0.16s ease, filter 0.16s ease, text-shadow 0.16s ease;
+  }
+
+  .desk-nav .home::after { content: "HOME"; }
+  .desk-nav .avvocati::after { content: "AVVOCATI"; }
+  .desk-nav .settori::after { content: "SETTORI"; }
+  .desk-nav .metodo::after { content: "METODO"; }
+  .desk-nav .tariffe::after { content: "TARIFFE"; }
+  .desk-nav .sedi::after { content: "SEDI"; }
+  .desk-nav .blog::after { content: "BLOG"; }
+
+  .page-metodo .desk-nav a::after { top: 48%; font-size: min(1.5cqw, 21px); }
+  .page-studio .desk-nav a::after { top: 48%; font-size: min(1.5cqw, 21px); }
+  .page-sedi .desk-nav a::after { top: 48%; font-size: min(1.5cqw, 21px); }
+  .page-professionisti .desk-nav a::after { top: 48%; font-size: min(1.5cqw, 21px); }
+}
+
+.desk-nav {
+  z-index: 6;
+}
+
+.desk-nav a { height: 1.66%; }
+
+.page-professionisti .desk-nav a { top: 92.295%; }
+.page-professionisti .desk-nav .home { left: 19.136%; width: 3.924%; }
+.page-professionisti .desk-nav .avvocati { left: 26.940%; width: 7.826%; }
+.page-professionisti .desk-nav .settori { left: 38.624%; width: 6.614%; }
+.page-professionisti .desk-nav .metodo { left: 49.096%; width: 5.776%; }
+.page-professionisti .desk-nav .tariffe { left: 58.730%; width: 6.922%; }
+.page-professionisti .desk-nav .sedi { left: 69.533%; width: 3.660%; }
+.page-professionisti .desk-nav .blog { left: 76.389%; width: 5.159%; top: 92.057%; height: 2.444%; }
+
+.page-sedi .desk-nav a { top: 86.592%; height: 1.629%; }
+.page-sedi .desk-nav .home { left: 17.549%; width: 3.924%; }
+.page-sedi .desk-nav .avvocati { left: 25.353%; width: 7.826%; }
+.page-sedi .desk-nav .settori { left: 37.037%; width: 6.614%; }
+.page-sedi .desk-nav .metodo { left: 47.509%; width: 5.776%; }
+.page-sedi .desk-nav .tariffe { left: 57.143%; width: 6.922%; }
+.page-sedi .desk-nav .sedi { left: 67.945%; width: 3.660%; }
+.page-sedi .desk-nav .blog { left: 74.802%; width: 5.159%; top: 86.354%; height: 2.444%; }
+
+.page-metodo .desk-nav a { top: 94.507%; height: 1.662%; }
+.page-metodo .desk-nav .home { left: 19.136%; width: 3.924%; }
+.page-metodo .desk-nav .avvocati { left: 26.940%; width: 7.826%; }
+.page-metodo .desk-nav .settori { left: 38.624%; width: 6.614%; }
+.page-metodo .desk-nav .metodo { left: 49.096%; width: 5.776%; }
+.page-metodo .desk-nav .tariffe { left: 58.708%; width: 6.944%; }
+.page-metodo .desk-nav .sedi { left: 69.533%; width: 3.660%; }
+.page-metodo .desk-nav .blog { left: 76.389%; width: 5.159%; top: 94.168%; height: 2.679%; }
+
+.page-studio .desk-nav a { top: 94.34%; height: 2.34%; }
+.page-studio .desk-nav .home { left: 18.47%; width: 5.27%; }
+.page-studio .desk-nav .avvocati { left: 26.28%; width: 9.15%; }
+.page-studio .desk-nav .settori { left: 37.96%; width: 7.91%; }
+.page-studio .desk-nav .metodo { left: 48.41%; width: 7.12%; }
+.page-studio .desk-nav .tariffe { left: 58.07%; width: 8.27%; }
+.page-studio .desk-nav .sedi { left: 68.87%; width: 5.00%; }
+.page-studio .desk-nav .blog { left: 76.41%; width: 5.14%; }
+
+.page-studio .desk-nav a,
+.page-tariffe .desk-nav a,
+.page-settori .desk-nav a {
+  top: auto;
+  bottom: 3.1%;
+  height: 2.05%;
+}
+
+.page-studio .desk-nav .home,
+.page-tariffe .desk-nav .home,
+.page-settori .desk-nav .home { left: 18.47%; width: 5.27%; }
+.page-studio .desk-nav .avvocati,
+.page-tariffe .desk-nav .avvocati,
+.page-settori .desk-nav .avvocati { left: 26.28%; width: 9.15%; }
+.page-studio .desk-nav .settori,
+.page-tariffe .desk-nav .settori,
+.page-settori .desk-nav .settori { left: 37.96%; width: 7.91%; }
+.page-studio .desk-nav .metodo,
+.page-tariffe .desk-nav .metodo,
+.page-settori .desk-nav .metodo { left: 48.41%; width: 7.12%; }
+.page-studio .desk-nav .tariffe,
+.page-tariffe .desk-nav .tariffe,
+.page-settori .desk-nav .tariffe { left: 58.07%; width: 8.27%; }
+.page-studio .desk-nav .sedi,
+.page-tariffe .desk-nav .sedi,
+.page-settori .desk-nav .sedi { left: 68.87%; width: 5.00%; }
+.page-studio .desk-nav .blog,
+.page-tariffe .desk-nav .blog,
+.page-settori .desk-nav .blog { left: 76.41%; width: 5.14%; }
+
+.mobile-nav a {
+  top: 0;
+  height: 10%;
+}
+
+.mobile-nav .home { left: 0; width: 13%; }
+.mobile-nav .studio { left: 13%; width: 14%; }
+.mobile-nav .avvocati { left: 27%; width: 16%; }
+.mobile-nav .settori { left: 43%; width: 14%; }
+.mobile-nav .metodo { left: 57%; width: 14%; }
+.mobile-nav .tariffe { left: 71%; width: 14%; }
+.mobile-nav .sedi { left: 85%; width: 8%; }
+.mobile-nav .blog { left: 93%; width: 7%; }
+
+@media (max-width: 640px) {
+  .desk-nav {
+    display: none;
+  }
+}
+
+@media (min-width: 641px) {
+  .mobile-nav {
+    display: none;
+  }
+}

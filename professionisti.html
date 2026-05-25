@@ -1,48 +1,101 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Professionisti - Freedom Factory Studio Legale</title>
-  <link rel="stylesheet" href="./style/mockup-pages.css">
-</head>
-<body>
-  <main class="mockup-page page-professionisti">
-    <div class="mockup-stage">
-    <picture>
-      <source media="(max-width: 640px)" srcset="./assets/mockups/professionisti-mobile.png">
-      <img class="mockup-art" src="./assets/mockups/professionisti-desktop.png" alt="Professionisti">
-    </picture>
-    <div class="selectable-text-layer" aria-label="Testo selezionabile">
-      <div class="sel sel-title">PROFESSIONISTI</div>
-      <div class="sel sel-body sel-card-1">ROBERTO FILOCAMO
-Cassazionista
+<!-- META E RISORSE -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Gli avvocati di Studio Legale Freedom Factory: Roberto Moffa, Antonia Zunica, Filippo Troisi." />
+<meta name="author" content="Studio Legale Freedom Factory" />
 
-Geniale, Garbato e Gentile, Roberto patrocina innanzi alle Giurisdizioni superiori con raffinato talento e signorile senso di responsabilita</div>
-      <div class="sel sel-body sel-card-2">Solare, Sincera e Sicura, Antonia difende con il sorriso unendo ai tecnicismi giuridici una disarmante eleganza nell' urlare a voce alta i diritti dei propri clienti
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon_io/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon_io/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon_io/favicon-16x16.png" />
 
-ANTONIA ZUNICA</div>
-      <div class="sel sel-body sel-card-3">FILIPPO MARIA MOFFA
+<title>Avvocati — Freedom Factory Studio Legale</title>
 
-Dinamico, Disponibile e Determinato, Filippo lotta quotidianamente con tenacia e coraggio per chi nelle difficolta cerca serenita e giustizia</div>
-      <div class="sel sel-small sel-contact-1">robertofilocamo@icloud.com
-347.4432641</div>
-      <div class="sel sel-small sel-contact-2">zunica.avv@gmail.com
-340.6148869</div>
-      <div class="sel sel-small sel-contact-3">filippo_moffa@hotmail.com
-392.4777171</div>
+<link rel="stylesheet" href="./style/main.css" />
+<link rel="stylesheet" href="./style/pages.css" />
+<link rel="stylesheet" href="./style/mockup-pages.css" />
+<script src="./js/main.js" defer></script>
+
+<!-- MOBILE HEADER -->
+<div class="mobile-header">
+  <div class="top-bar">
+    <img src="./assets/logo.jpg" alt="Logo" class="logo-mobile" />
+  </div>
+  <div class="mobile-title">
+    <h2>STUDIO LEGALE</h2>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-controls="mobile-menu">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+    xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M3 4.5H19"  stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M3 9H19"  stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M3 13.5H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M3 18H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
+
+<!-- MOBILE MENU -->
+<nav class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <ul class="menu-links">
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="studio.html">STUDIO</a></li>
+    <li><a href="professionisti.html">AVVOCATI</a></li>
+    <li><a href="settori.html">SETTORI</a></li>
+    <li><a href="metodo.html">METODO</a></li>
+    <li><a href="tariffe.html">TARIFFE</a></li>
+    <li><a href="sedi.html">SEDI</a></li>
+    <li><a href="#" style="opacity:0.4;pointer-events:none;cursor:default;">BLOG</a></li>
+  </ul>
+</nav>
+
+<!-- DESKTOP IMAGE -->
+<div class="viewport-wrapper mockup-page page-professionisti">
+  <div class="scaled-container" data-width="1440" data-height="936">
+    <div class="page-img-wrap mockup-stage">
+      <img src="./assets/pages/desktop/professionisti.webp" class="mockup-art" alt="Avvocati" />
+      <nav class="page-nav-overlay">
+        <a href="index.html" title="Home"></a>
+        <a href="studio.html" title="Studio"></a>
+        <a href="professionisti.html" title="Avvocati"></a>
+        <a href="settori.html" title="Settori"></a>
+        <a href="metodo.html" title="Metodo"></a>
+        <a href="tariffe.html" title="Tariffe"></a>
+        <a href="sedi.html" title="Sedi"></a>
+        <a href="#" title="Blog" style="pointer-events:none;cursor:default;"></a>
+      </nav>
+      <div class="selectable-text-layer"></div>
     </div>
-    <nav class="mockup-links desk-nav" aria-label="Navigazione">
-      <a class="home" href="index.html">Home</a>
-      <a class="avvocati" href="professionisti.html">Avvocati</a>
-      <a class="settori" href="settori.html">Settori</a>
-      <a class="metodo" href="metodo.html">Metodo</a>
-      <a class="tariffe" href="tariffe.html">Tariffe</a>
-      <a class="sedi" href="sedi.html">Sedi</a>
-      <a class="blog" href="blog.html">Blog</a>
-    </nav>
-    </div>
-  </main>
-  <script src="./js/ocr-overlays.js" defer></script>
-</body>
+  </div>
+</div>
+
+<!-- MOBILE IMAGE -->
+<div class="page-mobile-img-wrap">
+  <img src="./assets/pages/mobile/professionisti.webp" alt="Avvocati mobile" />
+</div>
+
+<!-- LANDSCAPE WARNING -->
+<div class="landscape-warning">
+  <div class="warning-content">
+    <h2>Ruota il dispositivo in modalità verticale</h2>
+    <p>Per una migliore esperienza di navigazione, ruota il tuo dispositivo in modalità verticale.</p>
+  </div>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner">
+  <p>Utilizziamo cookie tecnici per il corretto funzionamento del sito.</p>
+  <div class="btn-cookie">
+    <span><a href="cookies.html">View more</a></span>
+    <span><a href="cookies.html">Cookie Settings</a></span>
+    <span id="on"><a href="#">Accetto</a></span>
+  </div>
+</div>
+
+<script>
+  document.body.classList.add('page-image');
+</script>
+<script src="./js/ocr-overlays.js" defer></script>
 </html>

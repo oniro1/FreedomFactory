@@ -6,20 +6,48 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Caricamento CSS e JS personalizzati
 function ff_enqueue_assets() {
+    $theme_dir = get_stylesheet_directory();
+    $theme_uri = get_stylesheet_directory_uri();
+
     // CSS principale
     wp_enqueue_style(
         'ff-main-style',
-        get_stylesheet_directory_uri() . '/style/main.css',
+        $theme_uri . '/style/main.css',
         array(),
-        filemtime( get_stylesheet_directory() . '/style/main.css' )
+        filemtime( $theme_dir . '/style/main.css' )
+    );
+
+    // CSS pagine interne
+    wp_enqueue_style(
+        'ff-pages-style',
+        $theme_uri . '/style/pages.css',
+        array( 'ff-main-style' ),
+        filemtime( $theme_dir . '/style/pages.css' )
+    );
+
+    // CSS OCR mockup
+    wp_enqueue_style(
+        'ff-mockup-style',
+        $theme_uri . '/style/mockup-pages.css',
+        array( 'ff-pages-style' ),
+        filemtime( $theme_dir . '/style/mockup-pages.css' )
     );
 
     // JS principale
     wp_enqueue_script(
         'ff-main-script',
-        get_stylesheet_directory_uri() . '/js/main.js',
+        $theme_uri . '/js/main.js',
         array(),
-        filemtime( get_stylesheet_directory() . '/js/main.js' ),
+        filemtime( $theme_dir . '/js/main.js' ),
+        true
+    );
+
+    // JS OCR overlays
+    wp_enqueue_script(
+        'ff-ocr-overlays',
+        $theme_uri . '/js/ocr-overlays.js',
+        array(),
+        filemtime( $theme_dir . '/js/ocr-overlays.js' ),
         true
     );
 }
@@ -58,12 +86,15 @@ add_action( 'wp_head', 'ff_add_meta_tags' );
 
 
 function carica_script_custom() {
-    wp_enqueue_script(
-        'custom-script',
-        get_template_directory_uri() . '/js/custom.js',
-        array(),
-        false,
-        true // carica nel footer
-    );
+    $custom_js = get_stylesheet_directory() . '/js/custom.js';
+    if ( file_exists( $custom_js ) ) {
+        wp_enqueue_script(
+            'custom-script',
+            get_stylesheet_directory_uri() . '/js/custom.js',
+            array(),
+            filemtime( $custom_js ),
+            true // carica nel footer
+        );
+    }
 }
 add_action('wp_enqueue_scripts', 'carica_script_custom');
